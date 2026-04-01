@@ -1,56 +1,45 @@
+
+#include <stdio.h>
+#include <stdlib.h>
 struct node {
     int data;
     struct node* next;
 };
-
 typedef struct node* NODE;
-
 NODE createNode(int x) {
-NODE t = (NODE) malloc(sizeof(struct node));
-t->data = x;
-t->next = NULL;
-return t;
+    NODE newNode = (NODE)malloc(sizeof(struct node));
+    if(newNode == NULL) {
+        printf("Memory allocation failed\n");
+        exit(1);
+    }
+    newNode->data = x;
+    newNode->next = NULL;
+    return newNode;
 }
-
 NODE addNode(NODE first, int x) {
-NODE temp = createNode(x);
-
-if(first == NULL) {
-    return temp;
+    NODE newNode = createNode(x);
+    if(first == NULL)
+        return newNode;
+    NODE temp = first;
+    while(temp->next != NULL)
+        temp = temp->next;
+    temp->next = newNode;
+    return first;
 }
-
-NODE cur = first;
-while(cur->next != NULL) {
-    cur = cur->next;
-}
-
-cur->next = temp;
-return first;
-}
-
 NODE concatenate(NODE t1, NODE t2) {
-if(t1 == NULL)
-    return t2;
-
-if(t2 == NULL)
+    if(t1 == NULL)
+        return t2;
+    NODE temp = t1;
+    while(temp->next != NULL)
+        temp = temp->next;
+    temp->next = t2;
     return t1;
-
-NODE cur = t1;
-while(cur->next != NULL) {
-    cur = cur->next;
 }
-
-cur->next = t2;
-return t1;
-}
-
 void displayList(NODE first) {
-NODE cur = first;
-
-while(cur != NULL) {
-    printf("%d --> ", cur->data);
-    cur = cur->next;
-}
-
-printf("NULL\n");
+    NODE temp = first;
+    while(temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
 }
