@@ -1,5 +1,3 @@
-/*Write a C program that performs a binary search to find the position of the given integer in the array.*/
-
 #include <stdio.h>
 
 int main() {
@@ -30,17 +28,6 @@ int main() {
         }
     }
 
-    if (result != -1)
-        printf("Element found at index %d\n", result);
-    else
-        printf("Element not found\n");
-
-    return 0;
-}
-    scanf("%d", &x);
-    
-    int result = binarySearch(arr, n, x);
-    
     if (result != -1)
         printf("Element found at index %d\n", result);
     else
