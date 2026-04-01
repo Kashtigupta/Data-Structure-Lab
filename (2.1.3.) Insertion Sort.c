@@ -1,35 +1,32 @@
-#include <stdio.h>
-
-void insertionSort(int a[], int n) {
-for (int i = 1; i < n; i++) {
-    int key = a[i];
-    int j = i - 1;
-
-    while (j >= 0 && a[j] > key) {
-        a[j + 1] = a[j];
-        j--;
-    }
-
-    a[j + 1] = key;
+#include<stdio.h>
+void main() {
+	int a[20], i, n, j, temp, pos;
+	printf("Enter value of n : ");
+	scanf("%d", &n);	
+  
+	for(i=0;i<n;i++){
+	printf("Enter element for a[%d] : ", i);
+		scanf("%d", &a[i]);
+	}
+	
+	printf("Before sorting the elements in the array are\n");
+	for(i=0;i<n;i++){
+		printf("Value of a[%d] = %d\n", i,a[i]);
+	}
+	
+	for(i=1;i<n;i++){
+		temp = a[i];
+		j=i-1;
+		while(j>=0 && a[j] > temp){
+			a[j+1] = a[j];
+			j--;
+		}
+		a[j+1] = temp;
+	}
+  
+	printf("After sorting the elements in the array are\n");
+for(i=0;i<n;i++){
+			printf("Value of a[%d] = %d\n", i,a[i]); 
 }
 
-
-}
-
-int main() {
-    int a[20], n, i;
-
-    scanf("%d", &n);
-
-    for (i = 0; i < n; i++) {
-        scanf("%d", &a[i]);
-    }
-
-    insertionSort(a, n);
-
-    for (i = 0; i < n; i++) {
-        printf("%d ", a[i]);
-    }
-
-    return 0;
 }
